@@ -10,14 +10,13 @@ typedef struct Node {
 int main() {
     FILE* file = fopen("main.c", "r");
     if (file == NULL) {
-        printf("無法開啟檔案\n");
         return 1;
     }
 
     Node* head = NULL;
     Node* tail = NULL;
     int ch;
-
+    
     while ((ch = fgetc(file)) != EOF) {
         Node* newNode = (Node*)malloc(sizeof(Node));
         if (newNode == NULL) break;
@@ -33,16 +32,17 @@ int main() {
             tail = newNode;
         }
     }
+
     fclose(file);
 
     Node* current = head;
     while (current != NULL) {
         if (current->character == '\n') {
             printf("'\\n' ");
-        } else if (current->character == '\t') {
-            printf("'\\t' ");
         } else if (current->character == '\r') {
             printf("'\\r' ");
+        } else if (current->character == '\t') {
+            printf("'\\t' ");
         } else if (current->character == ' ') {
             printf("' ' ");
         } else {
@@ -57,6 +57,6 @@ int main() {
         head = head->next;
         free(temp);
     }
-
     return 0;
 }
+
