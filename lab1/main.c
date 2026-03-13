@@ -9,10 +9,6 @@ typedef struct Node {
 
 int main() {
     FILE* file = fopen("main.c", "r");
-    if (file == NULL) {
-        return 1;
-    }
-
     Node* head = NULL;
     Node* tail = NULL;
     int ch;
@@ -59,4 +55,5 @@ int main() {
     }
     return 0;
 }
+
 
